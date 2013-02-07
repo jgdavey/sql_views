@@ -1,0 +1,61 @@
+/* html5doctor.com Reset v1.6.1 - http://cssreset.com */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}
+
+
+body {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  background-color: #f9f9f9;
+}
+
+#content {
+  width: 960px;
+  margin: 24px auto 0;
+}
+
+#content h1 {
+  font-size: 18px;
+}
+
+/* table */
+table {
+  border-top: solid 3px #000;
+  position: relative;
+  margin-top: 18px;
+}
+
+th, td {
+  text-align: left;
+  line-height: 18px;
+  padding: 9px 18px 8px 0;
+}
+
+th:first-child, td:first-child { padding-left: 10px; }
+th:last-child, td:last-child { padding-right: 10px; }
+
+thead th, thead td {
+  padding-top: 7px;
+}
+
+tbody th, tbody td {
+  border-top: solid 1px #999;
+}
+
+tbody tr:nth-child(odd) th,
+tbody tr:nth-child(odd) td { background: rgba(0, 0, 0, 0.035); }
+
+/* inbox */
+
+table#inbox {
+  font-size: 14px;
+  width: 100%;
+}
+
+#inbox td p strong {
+  display: block;
+  font-size: 14px
+}
+
+#inbox td p {
+  display: block;
+  font-size: 12px
+}
