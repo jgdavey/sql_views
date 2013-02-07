@@ -15,7 +15,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def reply_count
-    [messages.count - 1, 0].max
+    [messages.size - 1, 0].max
   end
 
   def to_name
