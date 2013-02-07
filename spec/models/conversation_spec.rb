@@ -40,9 +40,11 @@ describe Conversation do
       conversation.reply_count.should == 0
 
       conversation.messages.create(user_id: bob.id, body: "First")
+      conversation.reload
       conversation.reply_count.should == 0
 
       conversation.messages.create(user_id: alice.id, body: "Second")
+      conversation.reload
       conversation.reply_count.should == 1
     end
   end

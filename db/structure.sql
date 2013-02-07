@@ -43,6 +43,40 @@ CREATE TABLE conversations (
 
 
 --
+-- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE messages (
+    id integer NOT NULL,
+    conversation_id integer NOT NULL,
+    user_id integer NOT NULL,
+    body text NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: conversation_summaries; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW conversation_summaries AS
+    SELECT c.id, f.name AS from_name, t.name AS to_name, ((SELECT count(*) AS count FROM messages m2 WHERE (m2.conversation_id = c.id)) - 1) AS reply_count FROM ((conversations c JOIN users t ON ((t.id = c.to_id))) JOIN users f ON ((f.id = c.from_id)));
+
+
+--
 -- Name: conversations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -59,20 +93,6 @@ CREATE SEQUENCE conversations_id_seq
 --
 
 ALTER SEQUENCE conversations_id_seq OWNED BY conversations.id;
-
-
---
--- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE messages (
-    id integer NOT NULL,
-    conversation_id integer NOT NULL,
-    user_id integer NOT NULL,
-    body text NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
 
 
 --
@@ -100,18 +120,6 @@ ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
 
 CREATE TABLE schema_migrations (
     version character varying(255) NOT NULL
-);
-
-
---
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE users (
-    id integer NOT NULL,
-    name character varying(255) NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -216,3 +224,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130207172241');
 INSERT INTO schema_migrations (version) VALUES ('20130207172502');
 
 INSERT INTO schema_migrations (version) VALUES ('20130207174557');
+
+INSERT INTO schema_migrations (version) VALUES ('20130207220057');
