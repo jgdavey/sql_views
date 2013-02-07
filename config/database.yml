@@ -1,0 +1,15 @@
+defaults: &defaults
+  adapter: postgresql
+  min_messages: warning
+
+development:
+  <<: *defaults
+  database: mailbox_development
+
+test: &test
+  <<: *defaults
+  database: mailbox_test
+
+production:
+  <<: *defaults
+  database: mailbox_development
