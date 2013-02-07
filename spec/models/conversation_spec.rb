@@ -46,4 +46,16 @@ describe Conversation do
       conversation.reply_count.should == 1
     end
   end
+
+  describe "#to_name" do
+    it "returns the recipient's name" do
+      conversation.to_name.should == "Alice"
+    end
+  end
+
+  describe "#from_name" do
+    it "returns the sender's name" do
+      conversation.from_name.should == "Bob"
+    end
+  end
 end
