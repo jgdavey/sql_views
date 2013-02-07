@@ -3,7 +3,6 @@ class Conversation < ActiveRecord::Base
     self.table_name = "conversation_summaries"
     self.primary_key = "id"
     belongs_to :conversation, foreign_key: "id"
-    belongs_to :most_recent_message, class_name: "Message"
   end
 
   belongs_to :to, class_name: "User"
@@ -14,15 +13,7 @@ class Conversation < ActiveRecord::Base
   attr_accessible :from_id, :to_id, :subject
   validates_presence_of :from_id, :to_id, :subject
 
-  delegate :to_name, :from_name, :most_recent_message, to: :summary
-
-  def most_recent_message_body
-    most_recent_message.body if most_recent_message
-  end
-
-  def most_recent_message_sent_at
-    most_recent_message.created_at if most_recent_message
-  end
+  delegate :to_name, :from_name, :most_recent_message_sent_at, :most_recent_message_body, to: :summary
 
   def reply_count
     [summary.reply_count, 0].max

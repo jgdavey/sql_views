@@ -1,6 +1,6 @@
 class InboxesController < ApplicationController
   expose(:user) { User.first }
-  expose(:conversations) { user.conversations.includes(summary: :most_recent_message) }
+  expose(:conversations) { user.conversations.includes(:summary) }
 
   def show
   end
