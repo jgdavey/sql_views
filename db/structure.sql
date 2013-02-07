@@ -73,7 +73,7 @@ CREATE TABLE users (
 --
 
 CREATE VIEW conversation_summaries AS
-    SELECT c.id, f.name AS from_name, t.name AS to_name, ((SELECT count(*) AS count FROM messages m2 WHERE (m2.conversation_id = c.id)) - 1) AS reply_count FROM ((conversations c JOIN users t ON ((t.id = c.to_id))) JOIN users f ON ((f.id = c.from_id)));
+    SELECT c.id, f.name AS from_name, t.name AS to_name, ((SELECT count(*) AS count FROM messages m2 WHERE (m2.conversation_id = c.id)) - 1) AS reply_count, (SELECT m1.id FROM messages m1 WHERE (m1.conversation_id = c.id) ORDER BY m1.created_at DESC LIMIT 1) AS most_recent_message_id FROM ((conversations c JOIN users t ON ((t.id = c.to_id))) JOIN users f ON ((f.id = c.from_id)));
 
 
 --
